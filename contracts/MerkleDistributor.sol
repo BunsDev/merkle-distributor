@@ -85,4 +85,15 @@ contract MerkleDistributor is IMerkleDistributor {
         IERC20(_token).transfer(deployer, _amount);
       }
     }
+      function collectUnclaimed(uint256 amount) external{
+      require(msg.sender == deployer, 'MerkleDistributor: not deployer');
+      require(block.timestamp > endTime.div(5), 'MerkleDistributor: not so soon, devico');
+      require(IERC20(token).transfer(deployer, amount), 'MerkleDistributor: collectUnclaimed failed.');
+    }
+
+    // UPDATE | DEPLOYER ADDRESS | DEPLOYER ONLY
+    function dev(address _deployer) public {
+        require(msg.sender == deployer, "dev: wut?");
+        deployer = _deployer;
+    }
 }
