@@ -70,7 +70,7 @@ contract MerkleDistributor is IMerkleDistributor {
         uint256 foreitedAmount = amount.sub(claimableAmount);
         
         require(IERC20(token).transfer(account, claimableAmount), 'MerkleDistributor: Transfer to Account failed.');
-        require(IERC20(token).transfer(rewardAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to rewardAddress failed.');
+        require(IERC20(token).transfer(rewardsAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to rewardAddress failed.');
         require(IERC20(token).transfer(burnAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to burnAddress failed.');
 
         emit Claimed(index, account, amount);
