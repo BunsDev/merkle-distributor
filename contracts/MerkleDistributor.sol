@@ -56,17 +56,20 @@ contract MerkleDistributor is IMerkleDistributor {
 
          // CLAIM AND SEND | TOKEN TO ACCOUNT
         _setClaimed(index);
-        uint256 duraTime = now.sub(startTime);
-        require(now >= startTime, 'MerkleDistributor: Too soon');
-        require(now <= endTime, 'MerkleDistributor: Too late');
-        // create a ceiling for the maximum amount of duraTime
-        uint256 duraDays = duraTime.div(secondsInaDay); // divided by the number of seconds per day
-        require(duraDays <= 100, 'MerkleDistributor: Too late'); // Check days
-        uint256 availAmount = amount.mul(duraDays.add(10)).div(100);// 10% + 1% daily
-        require(availAmount <= amount, 'MerkleDistributor: Slow your roll');// do not over-distribute
-        uint256 foreitedAmount = amount.sub(availAmount);
+        uint256 duraTime = block.timestamp.sub(startTime);
+        
+        require(block.timestamp >= startTime, 'MerkleDistributor: Too soon'); // [P] Start (unix): 1607990400 | Tuesday, December 15th, 2020 @ 12:00AM GMT
+        require(block.timestamp <= endTime, 'MerkleDistributor: Too late'); // [P] End (unix): 1616630400 | Thursday, March 25th, 2021 @ 12:00AM GMT
 
-        require(IERC20(token).transfer(account, availAmount), 'MerkleDistributor: Transfer to Account failed.');
+        uint256 duraDays = duraTime.div(secondsInaDay);
+        require(duraDays <= 100, 'MerkleDistributor: Too late'); // Check days
+
+        uint256 claimableDays = duraDays >= 90 ? 90 : duraDays; // limits claimable days (90)
+        uint256 claimableAmount = amount.mul(claimableDays.add(10)).div(100); // 10% + 1% daily
+        require(claimableAmount <= amount, 'MerkleDistributor: Slow your roll'); // gem insurance
+        uint256 foreitedAmount = amount.sub(claimableAmount);
+        
+        require(IERC20(token).transfer(account, claimableAmount), 'MerkleDistributor: Transfer to Account failed.');
         require(IERC20(token).transfer(rewardAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to rewardAddress failed.');
         require(IERC20(token).transfer(burnAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to burnAddress failed.');
 
