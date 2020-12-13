@@ -67,11 +67,11 @@ contract MerkleDistributor is IMerkleDistributor {
         uint256 claimableDays = duraDays >= 90 ? 90 : duraDays; // limits claimable days (90)
         uint256 claimableAmount = amount.mul(claimableDays.add(10)).div(100); // 10% + 1% daily
         require(claimableAmount <= amount, 'MerkleDistributor: Slow your roll'); // gem insurance
-        uint256 foreitedAmount = amount.sub(claimableAmount);
+        uint256 forfeitedAmount = amount.sub(claimableAmount);
         
         require(IERC20(token).transfer(account, claimableAmount), 'MerkleDistributor: Transfer to Account failed.');
-        require(IERC20(token).transfer(rewardsAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to rewardAddress failed.');
-        require(IERC20(token).transfer(burnAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to burnAddress failed.');
+        require(IERC20(token).transfer(rewardsAddress, forfeitedAmount.div(2)), 'MerkleDistributor: Transfer to rewardAddress failed.');
+        require(IERC20(token).transfer(burnAddress, forfeitedAmount.div(2)), 'MerkleDistributor: Transfer to burnAddress failed.');
 
         emit Claimed(index, account, amount);
     }
