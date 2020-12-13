@@ -10,18 +10,22 @@ contract MerkleDistributor is IMerkleDistributor {
     using SafeMath for uint256;
     address public immutable override token;
     bytes32 public immutable override merkleRoot;
-
-    // This is a packed array of booleans.
+    address public immutable override rewardsAddress;
+    address public immutable override burnAddress;
+    
+    // Packed array of booleans.
     mapping(uint256 => uint256) private claimedBitMap;
     address deployer;
 
     uint256 public immutable startTime;
     uint256 public immutable endTime;
-    uint256 internal immutable secondsInaDay = 1 days;
+    uint256 internal immutable secondsInaDay = 86400;
 
-    constructor(address token_, bytes32 merkleRoot_,uint256 startTime_,uint256 endTime_) public {
+    constructor(address token_, bytes32 merkleRoot_, address rewardsAddress_, address burnAddress_, uint256 startTime_, uint256 endTime_) public {
         token = token_;
         merkleRoot = merkleRoot_;
+        rewardsAddress = rewardsAddress_;
+        burnAddress = burnAddress_;
         deployer = msg.sender; // the deployer address
         startTime = startTime_;
         endTime = endTime_;
@@ -63,8 +67,9 @@ contract MerkleDistributor is IMerkleDistributor {
         uint256 foreitedAmount = amount.sub(availAmount);
 
         require(IERC20(token).transfer(account, availAmount), 'MerkleDistributor: Transfer to Account failed.');
-        // [P] Update: include 50% transfer to rewardsPool and 50% burn | 50% of 'forfeitedAmount'
-        require(IERC20(token).transfer(deployer, foreitedAmount), 'MerkleDistributor: Transfer to Deployer failed.');
+        require(IERC20(token).transfer(rewardAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to rewardAddress failed.');
+        require(IERC20(token).transfer(burnAddress, foreitedAmount.div(2)), 'MerkleDistributor: Transfer to burnAddress failed.');
+
         emit Claimed(index, account, amount);
     }
 
