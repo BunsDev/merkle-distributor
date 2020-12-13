@@ -41,8 +41,14 @@
     "compile": "waffle",
     "pretest": "yarn compile",
     "test": "mocha",
-    "generate-merkle-root": "ts-node scripts/generate-merkle-root.ts",
-    "generate-merkle-root:example": "ts-node scripts/generate-merkle-root.ts --input scripts/example.json",
+
+    "generate": "ts-node scripts/generate-merkle-root.ts",
+    "generate:test": "ts-node scripts/generate-merkle-root.ts --input scripts/claims_test.json",
+    "generate:prod": "ts-node scripts/generate-merkle-root.ts --input scripts/claims_prod.json",
+
+    "verify:test": "ts-node scripts/verify-merkle-root.ts --input scripts/result_test.json",
+    "verify:prod": "ts-node scripts/verify-merkle-root.ts --input scripts/result_prod.json",
+    
     "prepublishOnly": "yarn test"
   }
 }
