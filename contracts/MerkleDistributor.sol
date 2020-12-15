@@ -76,18 +76,18 @@ contract MerkleDistributor is IMerkleDistributor {
     }
 
     function collectDust(address _token, uint256 _amount) external {
-      require(msg.sender == deployer, "!deployer");
-      require(_token != token, "!token");
-      if (_token == address(0)) { // token address(0) = ETH
+        require(msg.sender == deployer, "!deployer");
+        require(_token != token, "!token");
+        if (_token == address(0)) { // token address(0) = ETH
         payable(deployer).transfer(_amount);
-      } else {
+        } else {
         IERC20(_token).transfer(deployer, _amount);
-      }
+        }
     }
     
     function collectUnclaimed(uint256 amount) external{
-      require(msg.sender == deployer, 'MerkleDistributor: not deployer');
-      require(IERC20(token).transfer(deployer, amount), 'MerkleDistributor: collectUnclaimed failed.');
+        require(msg.sender == deployer, 'MerkleDistributor: not deployer');
+        require(IERC20(token).transfer(deployer, amount), 'MerkleDistributor: collectUnclaimed failed.');
     }
 
     function dev(address _deployer) public {
