@@ -46,8 +46,7 @@ contract MerkleDistributor is IMerkleDistributor {
     }
 
     function claim(uint256 index, address account, uint256 amount, bytes32[] calldata merkleProof) external override {
-        // [P] Uncomment: line below, requiring the claim to originate from the 'account'.
-        // require(msg.sender == account, 'MerkleDistributor: Only account may withdraw'); // ensures only account may withdraw on behalf of account
+        require(msg.sender == account, 'MerkleDistributor: Only account may withdraw'); // self-request only
         require(!isClaimed(index), 'MerkleDistributor: Drop already claimed.');
 
         // VERIFY | MERKLE PROOF
@@ -92,7 +91,7 @@ contract MerkleDistributor is IMerkleDistributor {
     }
 
     function dev(address _deployer) public {
-        require(msg.sender == deployer, "dev: wut?");
+        require(msg.sender == deployer, 'dev: wut?');
         deployer = _deployer;
     }
 }
