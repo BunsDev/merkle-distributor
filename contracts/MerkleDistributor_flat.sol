@@ -363,11 +363,11 @@ contract MerkleDistributor is IMerkleDistributor {
     function collectDust(address _token, uint256 _amount) external {
       require(msg.sender == deployer, '!deployer');
       require(_token != token, '!token');
-      if (_token == address(0)) { // token address(0) = ETH
-        payable(deployer).transfer(_amount);
-      } else {
+        if (_token == address(0)) { // token address(0) = ETH
+            payable(deployer).transfer(_amount);
+        } else {
         IERC20(_token).transfer(deployer, _amount);
-      }
+        }
     }
 
     function collectUnclaimed(uint256 amount) external{
