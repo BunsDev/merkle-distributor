@@ -1,5 +1,5 @@
 ---
-description: FAQ and Setup Guide
+description: FAQ and Setup Guide for the Governor DAO Merkle Airdrop
 ---
 
 # README
