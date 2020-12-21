@@ -4,10 +4,10 @@
 
 ## Setup Guide <a id="setup"></a>
 
-* [README](setup/readme.md)
+* [README](setup/setup.md)
 * [Installation](setup/installation.md)
 * [Merkle Root](setup/merkle-root.md)
-* [Modifications](setup/setup-guide/README.md)
-  * [New Addresses](setup/setup-guide/contract-modifications.md)
-  * [Time Constraints](setup/setup-guide/time-constraints.md)
+* [Modifications](setup/modifications/README.md)
+  * [New Addresses](setup/modifications/contract-modifications.md)
+  * [Time Constraints](setup/modifications/time-constraints.md)
 
