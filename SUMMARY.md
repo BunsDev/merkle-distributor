@@ -4,7 +4,7 @@
 
 ## Setup Guide <a id="setup"></a>
 
-* [README](setup/setup.md)
+* [README](setup/readme.md.md)
 * [Installation](setup/installation.md)
 * [Merkle Root](setup/merkle-root.md)
 * [Modifications](setup/modifications/README.md)
