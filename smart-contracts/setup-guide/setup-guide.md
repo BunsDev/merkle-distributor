@@ -2,7 +2,7 @@
 description: Overview detailing how to setup up your work space for the merkle airdrop.
 ---
 
-# Setup Guide
+# Installation
 
 ### Clone Repository
 
