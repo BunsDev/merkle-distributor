@@ -2,10 +2,6 @@
 
 * [README](README.md)
 
-## Front End
-
-* [Untitled](front-end/untitled.md)
-
 ## Smart Contracts
 
 * [Merkle Airdrop](smart-contracts/merkle-airdrop/README.md)
