@@ -4,7 +4,7 @@ description: >-
   testing and deployment.
 ---
 
-# Merkle Airdrop
+# Setup Guide
 
 ## What are the knowledge requirements?
 

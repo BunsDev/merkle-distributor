@@ -5,8 +5,8 @@
 
 ## Smart Contracts
 
-* [Merkle Airdrop](smart-contracts/merkle-airdrop/README.md)
-  * [Setup Guide](smart-contracts/merkle-airdrop/setup-guide.md)
-  * [Generate Merkle Root](smart-contracts/merkle-airdrop/generate-merkle-root.md)
-  * [Contract Modifications](smart-contracts/merkle-airdrop/contract-modifications.md)
+* [Setup Guide](smart-contracts/setup-guide/README.md)
+  * [Setup Guide](smart-contracts/setup-guide/setup-guide.md)
+  * [Generate Merkle Root](smart-contracts/setup-guide/generate-merkle-root.md)
+  * [Contract Modifications](smart-contracts/setup-guide/contract-modifications.md)
 
