@@ -1,7 +1,6 @@
 # Table of contents
 
 * [README](README.md)
-* [Setup Guide](setup-guide.md)
 
 ## Smart Contracts
 
