@@ -12,9 +12,7 @@ This guide is designed so that even the most novice user may understand and foll
 
 ## What if I am still stuck?
 
-Feel free to reach out to me and I will gladly assist you, but understand I may also be busy with projects of my own, so you may not receive an immediate reply, but you will never be outright ignored. The best way to reach me is via the social links I have on my [Github](https://github.com/cryptounico).Can I become who I want to be?
-
-That's a tough question but thankfully, our team is on it. Please bear with us while we're investigating.
+Feel free to reach out to me and I will gladly assist you, but understand I may also be busy with projects of my own, so you may not receive an immediate reply, but you will never be outright ignored. The best way to reach me is via the social links I have on my [Github](https://github.com/cryptounico).
 
 
 

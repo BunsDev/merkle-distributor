@@ -1,10 +1,4 @@
----
-description: >-
-  How to generate a merkle root and test the merkle root to ensure all claims
-  are accounted for.
----
-
-# Generate Merkle Root
+# Merkle Root
 
 ### Generate Merkle Root
 
