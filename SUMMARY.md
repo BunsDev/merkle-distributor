@@ -4,6 +4,7 @@
 
 ## Setup Guide <a id="setup"></a>
 
+* [README](setup/readme.md)
 * [Installation](setup/installation.md)
 * [Setup Guide](setup/setup-guide/README.md)
   * [Untitled](setup/setup-guide/untitled-1.md)
