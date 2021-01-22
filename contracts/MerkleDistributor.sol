@@ -53,7 +53,7 @@ contract MerkleDistributor is IMerkleDistributor {
         bytes32 node = keccak256(abi.encodePacked(index, account, amount));
         require(MerkleProof.verify(merkleProof, merkleRoot, node), 'MerkleDistributor: Invalid proof.');
 
-         // CLAIM AND SEND | TOKEN TO ACCOUNT
+        // CLAIM AND SEND | TOKEN TO ACCOUNT
         _setClaimed(index);
         uint256 duraTime = block.timestamp.sub(startTime);
         
